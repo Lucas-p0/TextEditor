@@ -29,6 +29,14 @@ namespace TextEditor
         }
         static void Abrir()
         {
+            Console.Clear();
+            Console.WriteLine("Qual caminho para abrir o arquivo?");
+            var abrirArquivo = Console.ReadLine();
+
+            var caminhoArquivo = @$"{abrirArquivo}";
+
+            var lugarDoArquivo = File.ReadAllText(caminhoArquivo);
+            Console.WriteLine(lugarDoArquivo);
 
         }
         static void Editar()
@@ -58,6 +66,7 @@ namespace TextEditor
                 file.Write(text);
             }
             Console.WriteLine($"Arquivo {path} salvo com sucesso!");
+            Console.ReadLine();
             Menu();
         }
     }
