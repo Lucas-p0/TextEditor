@@ -31,13 +31,16 @@ namespace TextEditor
         {
             Console.Clear();
             Console.WriteLine("Qual caminho para abrir o arquivo?");
-            var abrirArquivo = Console.ReadLine();
+            var path = Console.ReadLine();
 
-            var caminhoArquivo = @$"{abrirArquivo}";
-
-            var lugarDoArquivo = File.ReadAllText(caminhoArquivo);
-            Console.WriteLine(lugarDoArquivo);
-
+            using (var file = new StreamReader(path))
+            {
+                string text = file.ReadToEnd();
+                Console.WriteLine(text);
+            }
+            Console.WriteLine("");
+            Console.ReadLine();
+            Menu();
         }
         static void Editar()
         {
